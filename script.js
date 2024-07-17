@@ -2,11 +2,22 @@
 
 // document.querySelector('.message').textContent = 'Correct Number!';
 
-// document.querySelector('.number').textContent = 12;
 // document.querySelector('.score').textContent = 17;
-
+//document.querySelector('.number').textContent = secretNum;
 // document.querySelector('.guess').vaue;
 // document.querySelector('.guess').vaue = 23;
+
+// Establish secret num
+const findSecretNum = () => {
+  return Math.trunc(Math.random() * 20) + 1;
+};
+const secretNum = findSecretNum();
+document.querySelector('.number').textContent = secretNum;
+
+// Establish message
+const displayMessage = message => {
+  document.querySelector('.message').textContent = message;
+};
 
 document
   .querySelector('.check')
@@ -15,6 +26,14 @@ document
     console.log(guess, typeof guess);
 
     if (!guess) {
-      document.querySelector('.message').textContent = 'No number!';
+      displayMessage('No number!');
+    } else if (guess === secretNum) {
+      displayMessage('You win!');
+      document.querySelector('body').style.backgroundColor = '#60b347';
+      document.querySelector('.number').textContent = secretNum;
+    } else if (guess !== secretNum) {
+      guess < secretNum
+        ? displayMessage('Too low')
+        : displayMessage('Too high');
     }
   });
