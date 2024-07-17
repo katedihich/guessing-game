@@ -27,6 +27,8 @@ document
 
     if (!guess) {
       displayMessage('No number!');
+    } else if (guess > 20) {
+      displayMessage('Guess must be between 1 and 20!');
     } else if (guess === secretNum) {
       displayMessage('You win!');
       document.querySelector('body').style.backgroundColor = '#60b347';
@@ -35,5 +37,7 @@ document
       guess < secretNum
         ? displayMessage('Too low')
         : displayMessage('Too high');
+    } else if (guess > 20) {
+      displayMessage('Between 1 and 20!');
     }
   });
